@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import ComponentHoc from '../components/componentHoc';
+import ComponentHoc from "../components/componentHoc";
 
 export default function(ComposedComponent) {
-    class HOC extends Component {
-        constructor(props) {
-            super(props);
-            this.sayHello = this.sayHello.bind(this);
-        }
+  class HOC extends Component {
+    constructor(props) {
+      super(props);
+      this.sayHello = this.sayHello.bind(this);
+    }
 
-        sayHello() {
-            alert('Hello, You use method from Hoc component');
-        }
+    sayHello() {
+      console.log("Hello, You use method from Hoc component");
+    }
 
-        render() {
-            return (
-                <div>
-                    <ComposedComponent sayHello={this.sayHello} {...this.props} />
-                    <ComponentHoc />
-                </div>
-            );
-        }
-    };
-    
-    return HOC;
+    render() {
+      return (
+        <div>
+          <ComposedComponent sayHello={this.sayHello} {...this.props} />
+          <ComponentHoc />
+        </div>
+      );
+    }
+  }
+
+  return HOC;
 }

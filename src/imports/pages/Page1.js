@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { Page1Text } from '../Text';
@@ -6,6 +7,15 @@ import Component1 from '../components/component1';
 import Component2 from '../components/component2';
 
 class Page1 extends Component {
+    constructor(props) {
+        super(props);
+
+    }
+
+    componentDidMount() {
+        this.props.sayHello();
+    }
+
     render() {
         return (
             <div>
@@ -16,6 +26,10 @@ class Page1 extends Component {
             </div>
         );
     }
+}
+
+Page1.propTypes = {
+    sayHello: PropTypes.func
 }
 
 export default Page1;

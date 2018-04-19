@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { Page1Text } from '../Text';
 import Component1 from '../components/component1';
@@ -17,9 +18,11 @@ class Page1 extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <h1>{Page1Text.header}</h1>
+                <h1>{this.props.hello}</h1>
                 <Component1 />
                 <Component2 />
                 <Link to={Page1Text.redirect}>{Page1Text.redirectName}</Link>
@@ -28,8 +31,11 @@ class Page1 extends Component {
     }
 }
 
-Page1.propTypes = {
-    sayHello: PropTypes.func
+function mapStateToProps(state) {
+    console.log('State', state);
+    return { 
+        hello: state.hello
+      };   
 }
 
-export default Page1;
+export default connect(mapStateToProps)(Page1);

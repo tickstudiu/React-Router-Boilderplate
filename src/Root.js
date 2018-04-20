@@ -11,7 +11,6 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 class Root extends Component {
   render() {
-      console.log('Store', store.getState());
     return (
       <Provider store={store}>
         <Routes />

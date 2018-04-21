@@ -7,7 +7,8 @@ import reducers from './imports/redux/reducer';
 
 import Routes from './Routes';
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+const CreateStoreApplyMiddleware = applyMiddleware(reduxThunk)(createStore);
+const store = CreateStoreApplyMiddleware(reducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class Root extends Component {
   render() {
